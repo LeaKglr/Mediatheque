@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Cd :</title>
+</head>
+<body>
+    <h1>Ajouter un CD</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ cd_form.as_p }}
+            <button type="submit">Ajouter le CD</button>
+        </form>
+
+    <a href="{% url 'library_menu' %}">Retour</a>
+</body>
+</html>

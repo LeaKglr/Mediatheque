@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un membre-emprunteur</title>
+</head>
+<body>
+    <h1>Créer un membre-emprunteur :</h1>
+
+      <form method="post" action="{% url 'create_member_borrower' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Créer un membre-emprunteur</button>
+      </form>
+
+    <a href="{% url 'library_menu' %}">Retour à l'accueil</a>
+</body>
+</html>

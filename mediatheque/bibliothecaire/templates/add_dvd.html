@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Dvd</title>
+</head>
+<body>
+  <h1>Ajouter un DVD :</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ dvd_form.as_p }}
+        <button type="submit">Ajouter le DVD</button>
+    </form>
+
+    <a href="{% url 'library_menu' %}">Retour</a>
+</body>
+</html>
