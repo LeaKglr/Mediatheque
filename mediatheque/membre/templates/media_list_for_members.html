@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des médias</title>
+</head>
+<body>
+    <h1>Liste des Médias</h1>
+
+        <!-- Section pour les Livres -->
+        <h2>Livres :</h2>
+            <ul>
+                {% for book in books %}
+                    <li>
+                        {{ book.name }} - Auteur : {{ book.author }} - Disponibilité : {{ book.available }}
+                    </li>
+                {% empty %}
+                    <li>Aucun livre trouvé.</li>
+                {% endfor %}
+            </ul>
+
+        <!-- Section pour les DVDs -->
+        <h2>DVD :</h2>
+            <ul>
+                {% for dvd in dvds %}
+                    <li>
+                        {{ dvd.name }} - Réalisateur : {{ dvd.director }} - Disponibilité : {{ dvd.available }}
+                    </li>
+                {% empty %}
+                    <li>Aucun DVD trouvé.</li>
+                {% endfor %}
+            </ul>
+
+        <!-- Section pour les CDs -->
+        <h2>CD :</h2>
+            <ul>
+                {% for cd in cds %}
+                    <li>
+                        {{ cd.name }} - Artiste : {{ cd.artist }} - Disponibilité : {{ cd.available }}
+                    </li>
+                {% empty %}
+                    <li>Aucun CD trouvé.</li>
+                {% endfor %}
+            </ul>
+
+        <!-- Section pour les jeux de plateau -->
+        <h2>Jeux de plateau :</h2>
+            <ul>
+                {% for boardgame in boardgames %}
+                    <li>{{ boardgame.nameGame }} - {{ boardgame.creator }}</li>
+                {% empty %}
+                    <li>Aucun jeu de plateau trouvé.</li>
+                {% endfor %}
+            </ul>
+
+    <!-- Bouton pour revenir à la page membre -->
+    <a href="{% url 'member_menu' %}">Retour à l'accueil membre</a>
+</body>
+</html>

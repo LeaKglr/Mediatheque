@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un emprunt</title>
+</head>
+<body>
+  <h1>Créer un emprunt pour {{borrower.last_name }} {{ borrower.first_name}}</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="media">Sélectionner un média :</label>
+        <select name="media" id="media">
+            {% for media in media_list %}
+                <option value="{{ media.id }}">{{ media.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Créer</button>
+    </form>
+
+  {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <a href="{% url 'library_menu' %}">Retour à l'accueil</a>
+</body>
+</html>

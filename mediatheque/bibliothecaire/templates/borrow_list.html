@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des emprunts</title>
+</head>
+<body>
+  <h1>Liste des emprunts</h1>
+
+  <table>
+    <thead>
+        <tr>
+            <th>Média</th>
+            <th>Nom Emprunteur</th>
+            <th>Prénom Emprunteur</th>
+            <th>Date d'emprunt</th>
+            <th>Actions</th>
+            <th>Date de retour</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for borrow in borrows %}
+        <tr>
+            <td>{{ borrow.media.name }}</td>
+            <td>{{ borrow.borrower.last_name }}</td>
+            <td>{{ borrow.borrower.first_name }}</td>
+            <td>{{ borrow.borrow_date }}</td>
+            <td>
+                {% if not borrow.is_returned %}
+                    <a href="{% url 'return_borrow' borrow.id %}">
+                        <button>Retourner</button>
+                    </a>
+                {% else %}
+                    <span>Retourné</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if borrow.return_date %}
+                    Rendu le {{borrow.return_date }}
+                {% else %}
+                    Pas encore rendu
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+  {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+  {% endif %}
+
+    <a href="{% url 'library_menu' %}">Retour à l'accueil</a>
+</body>
+</html>

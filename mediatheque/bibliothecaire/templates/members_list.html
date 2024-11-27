@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des membres</title>
+</head>
+<body>
+    <h1>Liste des membres :</h1>
+
+        <ul>
+            {% for member in members %}
+                <li>{{ member.first_name }} {{ member.last_name }} - {{ member.email }}
+                    <a href="{% url 'update_member_borrower' member.id %}">Modifier</a>
+                    <a href="{% url 'delete_member_borrower' member.id %}">Supprimer</a>
+                    <a href="{% url 'create_borrow' member.id %}">
+                        <button>Créer un emprunt</button>
+                    </a>
+                </li>
+             {% empty %}
+                <li>Aucun membre emprunteur trouvé.</li>
+            {% endfor %}
+        </ul>
+
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <a href="{% url 'library_menu' %}">Retour à l'accueil</a>
+</body>
+</html>

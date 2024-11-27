@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Supprimer le membre</title>
+</head>
+<body>
+  <h2>Supprimer le membre</h2>
+      <p>Êtes-vous sûr de vouloir supprimer {{ member.first_name }} {{ member.last_name }} ?</p>
+
+      <form method="post" action="{% url 'delete_member_borrower' member.id %}">
+          {% csrf_token %}
+          <button type="submit">Confirmer la suppression</button>
+          <a href="{% url 'library_menu' %}">Annuler</a>
+      </form>
+</body>
+</html>

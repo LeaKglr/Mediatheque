@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Espace bibliothécaire</title>
+</head>
+<body>
+    <h1>Bienvenue sur la page des bibliothécaires</h1>
+
+        <h2>Créer un membre emprunteur :</h2>
+            <button onclick="location.href='{% url 'create_member' %}'">Créer un membre</button>
+
+
+        <h2>Afficher la liste des membres :</h2>
+            <a href="{% url 'members_list' %}">Voir la liste des membres</a>
+
+
+        <h2>Afficher la liste des médias :</h2>
+            <a href="{% url 'media_list' %}">Voir la liste des médias</a>
+
+
+        <h2>Voir la liste des emprunts :</h2>
+            <a href="{% url 'borrow_list' %}">Voir la liste des médias empruntés</a>
+
+        <h2>Ajouter un média :</h2>
+            <button onclick="location.href='{% url 'add_book' %}'">Ajouter un Livre</button>
+            <button onclick="location.href='{% url 'add_dvd' %}'">Ajouter un DVD</button>
+            <button onclick="location.href='{% url 'add_cd' %}'">Ajouter un CD</button>
+            <button onclick="location.href='{% url 'add_boardgame' %}'">Ajouter un jeu de plateau</button>
+
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+</body>
+</html>
