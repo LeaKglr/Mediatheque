@@ -12,7 +12,7 @@
             <ul>
                 {% for book in books %}
                     <li>
-                        {{ book.name }} - Auteur : {{ book.author }} - Disponibilité : {{ book.available }}
+                        {{ book.name }} - Auteur : {{ book.author}} - Disponibilité : {{book.available }}
                     </li>
                 {% empty %}
                     <li>Aucun livre trouvé.</li>
@@ -24,7 +24,7 @@
             <ul>
                 {% for dvd in dvds %}
                     <li>
-                        {{ dvd.name }} - Réalisateur : {{ dvd.director }} - Disponibilité : {{ dvd.available }}
+                        {{dvd.name}} - Réalisateur : {{dvd.director}} - Disponibilité : {{dvd.available}}
                     </li>
                 {% empty %}
                     <li>Aucun DVD trouvé.</li>
@@ -36,7 +36,7 @@
             <ul>
                 {% for cd in cds %}
                     <li>
-                        {{ cd.name }} - Artiste : {{ cd.artist }} - Disponibilité : {{ cd.available }}
+                        {{ cd.name }} - Artiste : {{ cd.artist}} - Disponibilité : {{cd.available}}
                     </li>
                 {% empty %}
                     <li>Aucun CD trouvé.</li>

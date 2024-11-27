@@ -5,7 +5,8 @@ from django.urls import reverse
 class MediaListForMembersTestCase(TestCase):
     def setUp(self):
         """
-        Prépare l'environnement de test avec des livres, DVDs et CDs.
+        Prépare l'environnement de test avec des livres, DVDs et CDs. Le client est utilisé pour envoyer des requêtes
+        HTTP simulées et il utilise le nom de la vue pour générer l'URL.
         """
         self.client = Client()
 
@@ -26,7 +27,7 @@ class MediaListForMembersTestCase(TestCase):
 
     def test_media_list_view_status_code(self):
         """
-        Teste que la vue renvoie un code 200.
+        Teste que la vue renvoie un code 200 en envoyant une requête GET à l'URL de la vue.
         """
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
