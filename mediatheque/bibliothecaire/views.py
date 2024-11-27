@@ -213,7 +213,7 @@ def create_borrow(request, member_id):
     logger.info(f"Tentative d'emprunt de média par le membre avec ID {member_id}.")
     borrower = get_object_or_404(Borrower, id=member_id)
 
-    # Vérification si l'emprunteur est bloqué
+    # Vérifie si l'emprunteur est bloqué
     if borrower.is_blocked:
         messages.error(request,
                        "Cet emprunteur est bloqué en raison d'emprunts en retard. Il ne peut pas emprunter de "
@@ -294,7 +294,6 @@ def add_book(request):
         logger.info("Requête GET reçue. Initialisation du formulaire vide.")
         book_form = BookForm()
 
-    # Retourne le formulaire s'il ne s'agit pas d'une requête POST ou s'il est invalide
     return render(request, 'add_book.html', {'book_form': book_form})
 
 

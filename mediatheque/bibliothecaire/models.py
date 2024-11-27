@@ -3,7 +3,7 @@ from django.utils.timezone import now
 from datetime import timedelta
 from django.utils import timezone
 
-# Modèle de base Media
+
 class Media(models.Model):
     name = models.CharField(max_length=100, default='Unnamed Media')
     loanDate = models.DateField(null=True, blank=True)
@@ -43,7 +43,7 @@ class Cd(Media):
     def __str__(self):
         return f"{self.name} - {self.artist}"
 
-# Modèles BoardGame et Borrower
+
 class BoardGame(models.Model):
     nameGame = models.CharField(max_length=50)
     creator = models.CharField(max_length=50)

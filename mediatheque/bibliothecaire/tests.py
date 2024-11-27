@@ -7,17 +7,12 @@ from django.utils.timezone import now
 class CreateMemberTestCase(TestCase):
     def setUp(self):
         """
-            Préparation des données valides et non valides pour créer un membre.
+            Préparation des données valides pour créer un membre.
         """
         self.valid_data = {
             'first_name': 'John',
             'last_name': 'Doe',
             'email': 'johndoe@example.com',
-        }
-        self.invalid_data = {
-            'first_name': '',
-            'last_name': 'Doe',
-            'email': 'invalid-email',
         }
 
     def test_create_member_success(self):
@@ -42,18 +37,21 @@ class CreateMemberTestCase(TestCase):
 class MembersListTestCase(TestCase):
     def setUp(self):
         """
-        Prépare l'environnement de test : crée des membres pour tester l'affichage.
+        Prépare l'environnement de test : crée des membres pour tester l'affichage. Le client est utilisé pour envoyer
+        des requêtes HTTP simulées et il utilise le nom de la vue pour générer l'URL.
+
+        Ensuite, des membres fictifs sont créés.
         """
         self.client = Client()
         self.url = reverse('members_list')
 
-        # Création de membres fictifs
+
         Borrower.objects.create(first_name="John", last_name="Doe", email="john.doe@example.com")
         Borrower.objects.create(first_name="Jane", last_name="Smith", email="jane.smith@example.com")
 
     def test_members_list_success(self):
         """
-        Teste que la liste des membres s'affiche correctement.
+        Teste que la liste des membres fictifs s'affiche correctement.
 
         Il envoie une requête HTTP GET vers l'url définie dans l'environnement et la réponse envoyé est stockée dans la
         variable response.
@@ -71,8 +69,8 @@ class MembersListTestCase(TestCase):
 class UpdateMemberBorrowerTestCase(TestCase):
     def setUp(self):
         """
-        Prépare l'environnement de test : en créant un membre existant. Une URL de la vue est générée pour le membre
-        créé.
+        Prépare l'environnement de test : en créant un membre existant. Le client est utilisé pour envoyer des requêtes
+        HTTP simulées, un membre fictif est créé et une URL de la vue est générée pour le membre créé.
         """
         self.client = Client()
         self.member = Borrower.objects.create(
@@ -115,8 +113,8 @@ class UpdateMemberBorrowerTestCase(TestCase):
 class DeleteMemberBorrowerTestCase(TestCase):
     def setUp(self):
         """
-        Prépare l'environnement de test : en créant un membre existant. Une URL de la vue est générée pour le membre
-        créé.
+        Prépare l'environnement de test : en créant un membre existant. Le client est utilisé pour envoyer des requêtes
+        HTTP simulées, un membre fictif est créé et une URL de la vue est générée pour le membre créé.
         """
         self.client = Client()
         self.member = Borrower.objects.create(
